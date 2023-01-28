@@ -1,9 +1,12 @@
-import bodyParser from 'body-parser';
+import bodyParser from 'body-parser' ;
 import express from 'express'
 import mongoose from 'mongoose';
 import { router } from './routes/routes';
+import dotenv from 'dotenv'
+dotenv.config();
 
-const mongoUrl = 'mongodb+srv://gahbr:root@cluster0.puwmgfz.mongodb.net/?retryWrites=true&w=majority'
+const mongoURI = process.env.MONGO_URI as string
+
 const app = express();
 
 app.use(express.static('src/public'))
@@ -14,7 +17,7 @@ app.use(bodyParser.json());
 connectMongo();
 async function connectMongo() { 
     try {
-        await mongoose.connect(mongoUrl);
+        await mongoose.connect(mongoURI);
         console.log("MongoDB Connected.");
     } catch (error) {
         console.log(error)
