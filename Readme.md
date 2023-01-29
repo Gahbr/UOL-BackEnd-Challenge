@@ -91,3 +91,21 @@ Queremos uma pessoa que goste do que faz, trabalhe em equipe e tenha vontade de 
 
 Se você se identificou, venha fazer parte do nosso time!
 
+------
+
+
+<br>
+<br>
+
+# Como instalar
+
+### ``` npm i ```
+
+Criar um arquivo *.env* na pasta raiz **"./src"** com as URI do MongoDB:
+
+```
+MONGO_URI =
+TEST_URI =
+```
+## Rodando o server
+### ``` npm run dev ```
