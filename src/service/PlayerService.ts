@@ -5,7 +5,6 @@ import { XMLParser } from "fast-xml-parser";
 
 export const all = async ()=>{
     return  await Player.find();
-    
 }
 
 export const createPlayer = async (nome: string, email: string,telefone: string, grupo: string, randomCodename: string)=>{
@@ -53,7 +52,5 @@ export const jogadoresAPI = async ()=> {
 }
 
 export const deleteOne = async (id : string)=> {
-  Player.findByIdAndDelete(id, () => {
-   return "DELETADO"
-  });
+ await Player.deleteOne({_id:id});
 }

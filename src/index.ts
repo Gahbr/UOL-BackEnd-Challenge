@@ -6,6 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 const mongoURI = process.env.MONGO_URI as string
+const mongoTEST = process.env.TEST_URI as string
 
 const app = express();
 
@@ -19,6 +20,10 @@ async function connectMongo() {
     try {
         await mongoose.connect(mongoURI);
         console.log("MongoDB Connected.");
+        if(process.env.NODE_ENV === 'test'){
+            await mongoose.connect(mongoTEST);
+            console.log("Mock Database connected.");
+        }
     } catch (error) {
         console.log(error)
     }

@@ -1,7 +1,7 @@
 import mongoose, { Schema, model, connect, mongo} from 'mongoose';
 
 // 1. Create an interface representing a document in MongoDB.
-interface IPlayer {
+export interface IPlayer {
   nome: string;
   email: string;
   telefone: string;
@@ -21,4 +21,4 @@ const playerSchema = new Schema<IPlayer>({
 });
 
 export const Player = model<IPlayer>("Player", playerSchema); 
-
+Player.createIndexes();
