@@ -44,6 +44,20 @@ describe (' Testing Player service ', ()=>{
         }
     }) 
 
+    it('should get the avengers list', async ()=>{
+        const avengers = await PlayerService.vingadoresAPI();
+        expect(avengers.includes('Hulk')).toBeTruthy();
+        expect(avengers.length).toBeGreaterThanOrEqual(1);
+       
+    }); 
+
+    it('should get the justice league list', async ()=>{
+        const ligaDaJustica = await PlayerService.ligaDaJusticaAPI();
+        expect(ligaDaJustica.includes('Batman')).toBeTruthy();
+        expect(ligaDaJustica.length).toBeGreaterThanOrEqual(1);
+       
+    }); 
+    
     it('should delete an user', async ()=>{
         const users = await Player.findOne ({codename:'Hulk'})     
    
