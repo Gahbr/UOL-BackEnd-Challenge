@@ -2,7 +2,8 @@
 import mongoose, { Error } from 'mongoose';
 import { IPlayer, Player } from '../model/Player';
 import * as PlayerService from './PlayerService'
-
+import dotenv from 'dotenv'
+dotenv.config();
 describe (' Testing Player service ', ()=>{
     let email = 'test@jest.com';
     let nome = 'tester';
@@ -11,8 +12,7 @@ describe (' Testing Player service ', ()=>{
     let codename = 'Hulk'
 
     beforeAll(async ()=>{
-        await mongoose.connect('mongodb+srv://gahbr:root@cluster0.puwmgfz.mongodb.net/mocks?retryWrites=true&w=majority');
-
+        await mongoose.connect(process.env.TEST_URI as string);
         //dropar e criar uma nova table a cada execucao
         Player.collection.drop()
         Player.collection.ensureIndex
